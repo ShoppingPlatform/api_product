@@ -21,10 +21,10 @@ app.use(express.json());
 
 app.use("/api/v1/products", productRoute);
 
-// app.listen(process.env.PORT || 5000, () => {
-//   console.log("Backend server is running!");
-// });
-
-app.listen(5004, () => {
+app.listen(process.env.PORT || 5004, () => {
   console.log("Backend server is running!");
 });
+
+// app.listen(5004, () => {
+//   console.log("Backend server is running!");
+// });
