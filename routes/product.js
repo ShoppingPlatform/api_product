@@ -89,7 +89,7 @@ router.get("/find/:id", verifyTokenAndAuthorization , async (req, res) => {
 });
 
 //GET ALL PRODUCTS
-router.get("/",verifyTokenAndAuthorization, async (req, res) => {
+router.get("/", async (req, res) => {
   const qNew = req.query.new;
   const qCategory = req.query.category;
   try {
