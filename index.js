@@ -10,13 +10,20 @@ const cors = require("cors");
 dotenv.config();
 
 mongoose
-  .connect("mongodb+srv://Admin:Admin123+@mindfulness.tglek.mongodb.net/?retryWrites=true&w=majority")
+  .connect(
+    "mongodb+srv://Admin:Admin123+@mindfulness.tglek.mongodb.net/?retryWrites=true&w=majority"
+  )
   .then(() => console.log("DB Connection Successful!"))
   .catch((err) => {
     console.log(err);
   });
 
-app.use(cors());
+var corsOptions = {
+  origin:
+    "https://63255e563cd2e07f436de993--resonant-licorice-b9748e.netlify.app/",
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use("/api/v1/products", productRoute);
