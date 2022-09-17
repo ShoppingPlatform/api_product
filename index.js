@@ -20,10 +20,24 @@ mongoose
 
 var corsOptions = {
   origin:
-    "https://63255e563cd2e07f436de993--resonant-licorice-b9748e.netlify.app/",
+    "https://63255e563cd2e07f436de993--resonant-licorice-b9748e.netlify.app",
 };
 
 app.use(cors(corsOptions));
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested, Content-Type, Accept Authorization"
+  );
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "POST, PUT, PATCH, GET, DELETE");
+    return res.status(200).json({});
+  }
+  next();
+});
+
 app.use(express.json());
 
 app.use("/api/v1/products", productRoute);
